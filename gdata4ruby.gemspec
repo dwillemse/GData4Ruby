@@ -1,7 +1,7 @@
 Gem::Specification.new do |s|
    s.name = %q{gdata4ruby}
-   s.version = "0.1.1"
-   s.date = %q{2010-05-02}
+   s.version = "0.1.3"
+   s.date = %q{2010-08-11}
    s.authors = ["Mike Reich"]
    s.email = %q{mike@seabourneconsulting.com}
    s.summary = %q{A full featured wrapper for interacting with the base Google Data API}

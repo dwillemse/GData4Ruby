@@ -27,6 +27,8 @@ module GData4Ruby
       entry.attributes["xmlns:app"] = "http://www.w3.org/2007/app"
       entry.attributes["xmlns:docs"] = "http://schemas.google.com/docs/2007"
       entry.attributes["xmlns"] = "http://www.w3.org/2005/Atom"
+      entry.attributes["xmlns:georss"] = ""
+      entry.attributes["xmlns:gml"] = ""
       entry
     end
   end

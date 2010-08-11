@@ -18,13 +18,13 @@
 require 'gdata4ruby/base' 
 
 module GData4Ruby
-#The service class is the main handler for all direct interactions with the 
-#Google Data API.
-
+  #The service class is the main handler for all direct interactions with the 
+  #Google Data API.
+  
   class Service < Base
     #Convenience attribute contains the currently authenticated account name
     attr_reader :account
-        
+    
     # The token returned by the Google servers, used to authorize all subsequent messages
     attr_reader :auth_token
     
@@ -35,15 +35,18 @@ module GData4Ruby
         self.send("#{key}=", value)
       end    
     end
-  
+    
     # The authenticate method passes the username and password to google servers.  
     # If authentication succeeds, returns true, otherwise raises the AuthenticationFailed error.
+    # Thanks to David King and Scott Taylor for Ruby 1.9 fix.
     def authenticate(username, password, service)
       @auth_token = nil
       ret = nil
       ret = send_request(Request.new(:post, AUTH_URL, "Email=#{username}&Passwd=#{password}&source=GCal4Ruby&service=#{service}&accountType=HOSTED_OR_GOOGLE"))
       if ret.class == Net::HTTPOK
-        @auth_token = ret.read_body.to_a[2].gsub("Auth=", "").strip
+        body = ret.read_body
+        lines = body.send(body.respond_to?(:lines) ? :lines : :to_s).to_a
+        @auth_token = lines.to_a[2].gsub("Auth=", "").strip
         @account = username
         @password = password
         return true
