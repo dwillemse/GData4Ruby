@@ -1,4 +1,6 @@
 #=CHANGELOG
+#==version 0.1.5
+#* Changed license to LGPLv3
 #==version 0.1.4
 #* Bugfix for GeoRSS and GML namespaces
 #==version 0.1.3
