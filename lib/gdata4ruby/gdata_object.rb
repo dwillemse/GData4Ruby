@@ -109,7 +109,7 @@ module GData4Ruby
           when 'content'
             @content_uri = ele.attributes['src'] if ele.attributes['src']
           when 'resourceId'
-            @id = ele.text
+            @id = ele.text.gsub('document:','')
           when 'title'
             @title = ele.text
           when 'category'
